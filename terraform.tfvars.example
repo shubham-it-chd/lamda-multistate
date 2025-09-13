@@ -1,0 +1,36 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and customize for your environment
+
+# AWS Configuration
+aws_region  = "us-east-1"
+aws_profile = "default"
+
+# Environment Configuration
+environment  = "dev"
+project_name = "terraform-multistate"
+
+# Common Tags
+common_tags = {
+  Environment = "dev"
+  Project     = "terraform-multistate"
+  Owner       = "DevOps Team"
+  ManagedBy   = "Terraform"
+  CostCenter  = "Engineering"
+}
+
+# Lambda Sample One Configuration
+# (Copy these to src/workloads/lambda/lambda-sample-one/terraform.tfvars)
+# function_name       = "my-lambda-sample-one"
+# custom_message      = "Hello from my customized Lambda One!"
+# timeout             = 45
+# memory_size         = 256
+# enable_vpc_config   = false
+
+# Lambda Sample Two Configuration  
+# (Copy these to src/workloads/lambda/lambda-sample-two/terraform.tfvars)
+# function_name       = "my-lambda-sample-two"
+# custom_message      = "Hello from my customized Lambda Two!"
+# debug_mode          = "true"
+# timeout             = 90
+# memory_size         = 512
+# enable_vpc_config   = false
