@@ -61,3 +61,20 @@ variable "common_tags" {
     ManagedBy   = "Terraform"
   }
 }
+
+# Optional: container image support
+variable "image_uri" {
+  description = "ECR image URI for container-based Lambda"
+  type        = string
+  default     = null
+}
+
+variable "image_config" {
+  description = "Container image configuration"
+  type = object({
+    command           = optional(list(string))
+    entry_point       = optional(list(string))
+    working_directory = optional(string)
+  })
+  default = null
+}

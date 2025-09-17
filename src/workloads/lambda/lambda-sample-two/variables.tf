@@ -46,6 +46,23 @@ variable "debug_mode" {
   default     = "false"
 }
 
+# Optional: switch to container image by setting these (and update package_type to "Image")
+variable "image_uri" {
+  description = "ECR image URI for container-based Lambda"
+  type        = string
+  default     = null
+}
+
+variable "image_config" {
+  description = "Container image configuration"
+  type = object({
+    command           = optional(list(string))
+    entry_point       = optional(list(string))
+    working_directory = optional(string)
+  })
+  default = null
+}
+
 variable "enable_vpc_config" {
   description = "Enable VPC configuration for Lambda"
   type        = bool

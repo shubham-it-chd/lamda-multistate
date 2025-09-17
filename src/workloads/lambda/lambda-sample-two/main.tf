@@ -31,6 +31,8 @@ data "terraform_remote_state" "security_group" {
 module "lambda_sample_two" {
   source = "../../modules/lambda"
 
+  # Packaging (keep Zip by default; switch to Image by setting image_uri below)
+  package_type     = "Zip"
   function_name     = var.function_name
   handler          = var.handler
   runtime          = var.runtime
@@ -38,6 +40,10 @@ module "lambda_sample_two" {
   source_code_path = "${path.module}/lambda_function_two.py"
   timeout          = var.timeout
   memory_size      = var.memory_size
+
+  # Image-specific (set these and package_type = "Image" to use container image)
+  image_uri    = var.image_uri
+  image_config = var.image_config
 
   environment_variables = {
     ENVIRONMENT    = var.environment

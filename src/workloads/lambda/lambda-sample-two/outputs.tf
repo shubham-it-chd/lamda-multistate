@@ -23,6 +23,16 @@ output "lambda_function_qualified_arn" {
   value       = module.lambda_sample_two.lambda_function_qualified_arn
 }
 
+output "lambda_package_type" {
+  description = "Package type used for the Lambda function"
+  value       = module.lambda_sample_two.lambda_package_type
+}
+
+output "lambda_image_uri" {
+  description = "Image URI used by the Lambda function when package_type=Image"
+  value       = module.lambda_sample_two.lambda_image_uri
+}
+
 # Referenced IAM and Security Group outputs from remote state
 output "iam_role_arn" {
   description = "ARN of the IAM role used by Lambda (from common/iam)"

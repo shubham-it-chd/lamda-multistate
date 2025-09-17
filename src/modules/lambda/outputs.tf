@@ -32,3 +32,13 @@ output "cloudwatch_log_group_arn" {
   description = "ARN of the CloudWatch log group"
   value       = aws_cloudwatch_log_group.lambda_logs.arn
 }
+
+output "lambda_package_type" {
+  description = "Package type of the Lambda function (Zip or Image)"
+  value       = aws_lambda_function.lambda_function.package_type
+}
+
+output "lambda_image_uri" {
+  description = "URI of the container image (only for Image packages)"
+  value       = var.package_type == "Image" ? aws_lambda_function.lambda_function.image_uri : null
+}
